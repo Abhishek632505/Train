@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Train List</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+    }
+
+    header {
+      background-color: rgba(11, 61, 145, 0.9);
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      font-size: 1.5rem;
+      position: relative;
+    }
+
+    marquee {
+      font-size: 1rem;
+      margin-top: 0.5rem;
+      color: #ffeb3b;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background-color: rgba(255, 255, 255, 0.85);
+      border-radius: 10px;
+    }
+
+    .search-box {
+      margin-bottom: 1.5rem;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .train-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .train-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      flex: 1 1 calc(33.333% - 20px);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+
+    .train-card:hover {
+      transform: scale(1.02);
+    }
+
+    .train-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .train-info {
+      padding: 1rem;
+    }
+
+    .train-name {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .train-number {
+      color: #777;
+    }
+
+    @media (max-width: 768px) {
+      .train-card {
+        flex: 1 1 calc(50% - 20px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .train-card {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    Train List
+    <marquee behavior="scroll" direction="left" scrollamount="6">
+      Welcome! Find your train by name or number. Vande Bharat, Jan Shatabdi, and more available!
+    </marquee>
+  </header>
+
+   <div class="container">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search train by name or number...">
+    </div>
+
+    <div class="train-grid" id="trainGrid">
+      <!-- Train cards will be populated by JavaScript -->
+    </div>
+  </div>
+
+  <script>
+    const trains = [
+      {
+        name: "Budhpurnima Express",
+        number: "14223/14224",
+        image: "img20221012000044551475.jpg"
+      },
+      {
+        name: "Vikramshila Superfast Express",
+        number: "12367/12368",
+        image: "27_02_2025-vikramshila_express_23891831.jpeg"
+      },
+      {
+        name: "South Bihar Express",
+        number: "13287/13288",
+        image: "picsart240514002414565572325.jpg"
+      },
+      {
+        name: "Lichchavi Express",
+        number: "14005/14006",
+        image: "img202111231437293447922.jpg"
+      },
+      {
+        name: "Varanasi–Patna Jan Shatabdi Express",
+        number: "15125/15126",
+        image: "janshatabdi.jpg"
+      },
+      {
+        name: "Patna–Howrah Vande Bharat",
+        number: "22348",
+        image: "patna - howrah.jpg"
+      },
+      {
+        name: "Patna–Ranchi Vande Bharat",
+        number: "22349",
+        image: "202307291625522722273.jpg"
+      },
+      {
+        name: "Bhagalpur–Howrah Vande Bharat",
+        number: "22310",
+        image: "Bhagalpur-Howrah-Vande-Bharat.jpg"
+      }
+      
+    ];
+    
+     
+
+    const trainGrid = document.getElementById("trainGrid");
+    const searchInput = document.getElementById("searchInput");
+
+    function displayTrains(filter = "") {
+      trainGrid.innerHTML = "";
+      const filteredTrains = trains.filter(train =>
+        train.name.toLowerCase().includes(filter.toLowerCase()) ||
+        train.number.includes(filter)
+      );
+
+      if (filteredTrains.length === 0) {
+        trainGrid.innerHTML = "<p>No matching trains found.</p>";
+        return;
+      }
+
+      filteredTrains.forEach(train => {
+        const card = document.createElement("div");
+        card.className = "train-card";
+        card.innerHTML = `
+          <img src="${train.image}" alt="${train.name}">
+          <div class="train-info">
+            <div class="train-name">${train.name}</div>
+            <div class="train-number">Train No: ${train.number}</div>
+          </div>
+        `;
+        trainGrid.appendChild(card);
+      });
+    }
+
+    searchInput.addEventListener("input", (e) => {
+      displayTrains(e.target.value);
+    });
+
+    // Load all trains initially
+    displayTrains();
+  </script>
+
+</body>
+</html>

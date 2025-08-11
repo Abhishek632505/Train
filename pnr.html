@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PNR Status Checker</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-image: url('Kereta.jpeg'); /* Replace with your image URL */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+      padding: 40px;
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #555;
+    }
+
+    .form-group {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input[type="text"] {
+      padding: 12px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    button {
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+      background: #f0f0f0;
+      padding: 15px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>PNR Status Checker</h1>
+    <p>Enter your 10-digit PNR number to check your railway booking status.</p>
+    
+    <div class="form-group">
+      <input type="text" id="pnrInput" placeholder="Enter PNR Number" maxlength="10" />
+      <button onclick="checkPNR()">Check Status</button>
+    </div>
+
+    <div id="result" class="result"></div>
+  </div>
+
+  <script>
+    function checkPNR() {
+      const pnr = document.getElementById("pnrInput").value.trim();
+      const resultDiv = document.getElementById("result");
+
+      if (pnr.length !== 10 || isNaN(pnr)) {
+        resultDiv.innerHTML = "❌ Invalid PNR number. Please enter a valid 10-digit number.";
+        resultDiv.style.color = "red";
+        return;
+      }
+
+      const statuses = ["Confirmed ✅", "Waiting List WL/15 🚧", "RAC RAC/5 🔄", "Cancelled ❌"];
+      const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
+
+      resultDiv.innerHTML = `<strong>Status:</strong> ${randomStatus}`;
+      resultDiv.style.color = "#333";
+    }
+  </script>
+</body>
+</html>
