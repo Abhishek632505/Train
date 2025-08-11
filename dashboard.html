@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IRCTC Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: url('Vande-Bharat.webp') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    nav {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 5px 10px;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #0055aa;
+      border-radius: 5px;
+    }
+
+    marquee {
+      background: #ffcc00;
+      color: blue;
+      padding: 10px;
+      font-weight: bold;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 30px 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 60px;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      font-size: 18px;
+      color: #003366;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 5px;
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="814NZySS89L.png" alt="IRCTC Logo">
+      <h2>Dashboard</h2>
+    </div>
+    <nav>
+      <a href="login.html">Login</a>
+      <a href="booking.html">Book Ticket</a>
+      <a href="trains.html">Trains</a>
+      <a href="pnr.html">PNR</a>
+      <a href="payment.html">Payment</a>
+    </nav>
+  </header>
+
+  <marquee behavior="scroll" direction="left">🚆 Important Notice: Tatkal booking opens at 10 AM for AC & 11 AM for Non-AC classes. Book early!</marquee>
+
+  <div class="dashboard">
+    <div class="card">
+      <img src="https://img.icons8.com/color/96/train-ticket.png" alt="Book Ticket">
+      <h3>Book Ticket</h3>
+    </div>
+    <div class="card">
+      <img src="https://img.icons8.com/color/96/delete-ticket.png" alt="Cancel Ticket">
+      <h3>Cancel Ticket</h3>
+    </div>
+    <div class="card">
+      <img src="https://img.icons8.com/color/96/train.png" alt="Train Status">
+      <h3>Train Status</h3>
+    </div>
+    <div class="card">
+      <img src="https://img.icons8.com/color/96/route.png" alt="Train Routes">
+      <h3>Train Routes</h3>
+    </div>
+    <div class="card">
+      <img src="https://img.icons8.com/color/96/customer-support.png" alt="Customer Care">
+      <h3>Customer Care</h3>
+    </div>
+  </div>
+
+</body>
+</html>
